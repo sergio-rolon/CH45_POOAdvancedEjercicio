@@ -55,5 +55,14 @@ public class Main {
         studentService.showEnrolledStudents("Math");
         studentService.showEnrolledStudents("Physics");
         studentService.showEnrolledStudents("Physics2");//Prueba con materia errónea
+        
+        
+        try {
+        	studentService.enrollStudents( "Physics", "1030");// Prueba enroll materia ya agregada antes
+        }catch(CourseNotFoundException |StudentNotFoundException e) {
+        	System.out.println(e.getMessage());
+        }
+        
+        
     }
 }

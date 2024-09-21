@@ -37,10 +37,15 @@ public class StudentService
     			if ( !coursesEnrolledByStudents.containsKey( studentID ) )
             {
                 coursesEnrolledByStudents.put( studentID, new ArrayList<>() );
-                System.out.println("Student with ID "+studentID+" was enrolled in "+courseName);
+                
             }
-            coursesEnrolledByStudents.get( studentID ).add( course );
-        	}else {
+    			if(!coursesEnrolledByStudents.get( studentID ).contains(course)) {
+    				coursesEnrolledByStudents.get( studentID ).add( course );
+    				System.out.println("Student with ID "+studentID+" was enrolled in "+courseName);
+        	} else { 
+        		System.out.println("\nCourse "+courseName+" was enrolled before for student with ID "+studentID);
+        	}
+    			}else {
         		throw new StudentNotFoundException("\nStudent with ID "+studentID+" wasn't found in "+courseName+"!" );
     		}
 	
